@@ -1,0 +1,116 @@
+{% extends 'home/main.html' %} {% load static %}
+   
+{% block head %} 
+    <!-- <link rel="stylesheet" href="assets/css/vendor/vendor.min.css" />
+    <link rel="stylesheet" href="assets/css/plugins/plugins.min.css" />
+    <link rel="stylesheet" href="assets/css/style.min.css" /> -->
+
+    {% endblock %}
+    {% block content %}
+    <!-- Banner Section Start -->
+
+    <section class="banner-section position-relative">
+        <img class="banner-shape" src="static/assets/images/banner/shape1.png" alt="shape" />
+        <div class="container">
+            <div class="row">
+                <!-- Banner-Content Start -->
+                <div class="col-md-6">
+                    <div class="banner-content banner-padding">
+                        <h3 class="title">Blog Post</h3>
+                        <p>
+                            Pleasure rationally encounter consequences <br />
+              are extremely painful great oppurtunity
+                        </p>
+                    </div>
+                </div>
+                <!-- Banner-Content End -->
+
+                <!-- Banner-Content Start -->
+                <div class="col-md-6 mt-7 mt-md-0">
+                    <div class="banner-content scene banner-img">
+                        <div data-depth="0.2">
+                            <img src="static/assets/images/blog/banner.png" alt="img" />
+                        </div>
+                    </div>
+                </div>
+                <!-- Banner-Content End -->
+            </div>
+        </div>
+    </section>
+    <!-- Banner Section End -->
+
+    <!-- Blog Section Start -->
+    <section class="blog-section section-py">
+        <div class="container">
+            <div class="row mb-n7">
+<!-- single blog start -->
+{% for post in posts %}
+<div class="col-lg-4 col-sm-6 mb-7">
+    <div class="blog-card">
+        <div class="thumb bg-light p-0 text-center">
+            <a href="{% url 'blog_detail' post.slug %}">
+                <img src="{{post.image.url}}" alt="img" />
+            </a>
+        </div>
+        <div class="blog-content">
+            <span class="blog-meta">{{post.user.first_name}} - {{post.create_date|date:"d M, Y"}}</span>
+            <h3 class="title">
+                <a href="{% url 'blog_detail' post.slug %}">{{post.title}}</a>
+            </h3>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<!-- single blog end -->
+            </div>
+            {% if posts.has_other_pages %}
+            <div class="pagination justify-content-center">
+                {% if posts.has_previous %}
+                <a href="?page={{ posts.previous_page_number }}"><i class="fa-solid fa-angles-left"></i></a> {% endif %} 
+                {% for p in posts.paginator.page_range %} 
+                {% if pos.number == p %}
+                <a href="#" class="active">{{ p }}</a> 
+                {% else %}
+                <a href="?page={{ p }}">{{ p }}</a> {% endif %} 
+                {% endfor %} 
+                {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}"><i class="fa-solid fa-angles-right"></i></a> {% endif %}
+            </div>
+            {% endif %}
+        
+    </section>
+    <!-- Blog Section ENd -->
+
+    <!-- News letter Section Start -->
+    <section class="news-letter-section section-pb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-xl-6 mx-auto">
+                    <div class="title-section mb-10 text-center">
+                        <span class="sub-title">NEWSLETTER</span>
+                        <h3 class="title mb-0">
+                            Subscribe <span class="text-primary">Newsletter</span> &
+                            <br class="d-none d-xl-block" />get latest update...
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-10 mx-auto">
+                    <form id="mc-form" class="news-letter-form d-flex">
+                        <input id="mc-email" class="form-control" type="email" placeholder="Enter Email here" name="email" required='' />
+                        <button class="search-btn" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News letter Section End -->
+
+    {% endblock %}
+<!-- 
+    <script src="assets/js/vendor/vendor.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/vendor/parallax.js"></script>
+    <script src="assets/js/plugins/plugins.min.js"></script>
+    <script src="assets/js/ajax-contact.js"></script>
+    <script src="assets/js/main.min.js"></script> -->

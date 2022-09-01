@@ -1,0 +1,324 @@
+{% extends 'home/main.html' %} {% load static %}
+
+{% block head %} {% endblock %}
+{% block content %}
+    <!-- Banner Section Start -->
+
+    <section class="banner-section position-relative">
+        <img class="banner-shape" src="assets/images/banner/shape1.png" alt="shape" />
+        <div class="container">
+            <div class="row">
+                <!-- Banner-Content Start -->
+                <div class="col-md-6">
+                    <div class="banner-content banner-padding">
+                        <h3 class="title">Blog Details</h3>
+                        <p>
+                            Pleasure rationally encounter consequences <br />
+              are extremely painful great oppurtunity
+                        </p>
+                    </div>
+                </div>
+                <!-- Banner-Content End -->
+
+                <!-- Banner-Content Start -->
+                <div class="col-md-6 mt-7 mt-md-0">
+                    <div class="banner-content scene banner-img">
+                        <div data-depth="0.2">
+                            <img src="assets/images/blog/banner.png" alt="img" />
+                        </div>
+                    </div>
+                </div>
+                <!-- Banner-Content End -->
+            </div>
+        </div>
+    </section>
+    <!-- Banner Section End -->
+
+    <!-- Blog Section Start -->
+    <section class="blog-section section-py">
+        <div class="container">
+            <div class="row mb-n7">
+                <!-- blog-details-content -->
+                <div class="col-xl-8 col-lg-8 mb-7">
+                    <div class="blog-details-content">
+                        <!-- blog-details-thumb -->
+                        <div class="blog-details-thumb">
+                            <img src="{{post.image.url}}" alt="img" />
+                        </div>
+                        <!-- blog-details-thumb -->
+                        <p class="blog-details-meta">{{post.user.first_name}} - {{post.create_date|date:"d M, Y"}}</p>
+                        <h3 class="blog-details-title">
+                            {{post.title}}
+                        </h3>
+                        <div class="blog-details-list">
+                            <p>
+                                <i class="fa fa-angle-double-right"></i>
+
+                                {% if post.sub_title %}{{ post.sub_title}}{% endif %}
+                            </p>
+                        </div>
+                        <div class="blog-details-grid">
+                            {{post.content|safe}}
+                        </div>
+                        <!-- blog-details-grid end -->
+                        <!-- social-tags start -->
+                        <div class="social-tags d-sm-flex justify-content-between align-items-center">
+                            <p class="mb-4 mb-sm-0">
+                                <i class="fa fa-tags"></i> {% for tag in post.tags.all %} #{{tag}} {% endfor %}
+                            </p>
+
+                            <!-- social links start-->
+                            <ul class="social-links d-flex">
+                                <li>{{post.category.name}}</li>
+                            </ul>
+
+                            <!-- social links end-->
+                        </div>
+                        <!-- social-tags end -->
+                        <!-- blog-comments start -->
+                        <div class="blog-comments">
+                            <h3 class="blog-comment-title">Izohlar({{comments.count}})</h3>
+                            <p class="pb-1">
+                                Top rated construction packages we pleasure rationally
+                                encounter consequences interesting who loves or pursue or
+                                desires to obtain These cases are perfectly simple and easy
+                            </p>
+                        </div>
+                        <!-- blog-comments end -->
+                        <!-- authors -->
+                        <div class="authors">
+                            <!-- author-list start -->
+                            {% for cm in comments %}
+                            <div class="d-flex flex-wrap" style="margin-bottom:15px">
+                                <img src="{{cm.user.picture.url}}" alt="profile" class="author-profile align-self-start" style="width:70px; height:70px; object-fit:cover;" />
+                                <div class="author-info">
+                                    <h3 class="author-title">{{cm.user.get_full_name}}</h3>
+                                    <p class="author-meta">{{cm.date|date:"d.m.Y H:i"}}</p>
+                                    <p>
+                                        {{cm.content}}
+                                    </p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- author-list end -->
+                        </div>
+                        <!-- authors -->
+                        {% if request.user.is_authenticated %}
+                        <!-- blog-comments start -->
+                        <div class="blog-comments blog-pt-55">
+                            <h3 class="blog-comment-title">Javob yoki Izoh qoldiring</h3>
+                            <p>
+                                Top rated construction packages we pleasure rationally
+                                encounter consequences interesting who loves or pursue or
+                                desires to obtain These cases are perfectly simple and easy
+                            </p>
+                        </div>
+                        <!-- blog-comments end -->
+
+                        <!-- form start -->
+                        <form id="contactForm"  method="POST" class="row"> {% csrf_token %}
+                            <!-- assets/php/contact.php -->
+                            <div class="col-12 mb-9">
+                                <textarea class="form-control massage-control" name="message" id="massage" cols="30" rows="10" placeholder="Message"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button id="contactSubmit" type="submit" class="btn btn-lg btn-dark btn-hover-dark" data-complete-text="Well Done!">
+                                    Jo'natish
+                                </button>
+                                <p class="form-message mt-3"></p>
+                            </div>
+                        </form>
+                        {% else %}
+                        <div class="blog-comments blog-pt-55">
+                            <h3 class="blog-comment-title">Javob yoki Izoh qoldirish uchun iltimos ro'yxatdan o'ting</h3>
+                        </div>
+                        {% endif %}
+   
+                        <!-- form end -->
+                    </div>
+                </div>
+                <!-- blog-details-content -->
+                <div class="col-xl-3 col-lg-4 mb-7 offset-xl-1">
+                    <div class="widget-wrapper widget-wrapper-nl">
+                        <!-- sidebar-widget start -->
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">Search</h3>
+                            <div class="widget-content">
+                                <div class="widget-search">
+                                    <form action="#">
+                                        <input class="form-control" type="text" placeholder="Type your keyword..." />
+                                        <button class="widget-search-btn">
+                                            <i class="icofont-search"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- sidebar-widget end -->
+
+                        <!-- sidebar-widget start -->
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">Categories</h3>
+                            <div class="widget-list">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Digital Solution<span>328</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Business Plan<span>240</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Investment Planning<span>87</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Consultancy<span>20</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Marketing Policy<span>59</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Branding<span>72</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Campaign & PR<span>128</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- sidebar-widget end -->
+                        <!-- sidebar-widget start -->
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">popular post</h3>
+                            <!-- widget-post-list startrt -->
+                            <div class="widget-post-list">
+                                <a href="#" class="post-thumb">
+                                    <img src="assets/images/blog/post/1.png" alt="img" />
+                                </a>
+                                <div class="widget-post-content">
+                                    <h3 class="widget-sub-title">
+                                        <a href="#">Invesment policy for a Startup Business</a>
+                                    </h3>
+                                    <p class="post-meta">Septemer 10, 2021</p>
+                                </div>
+                            </div>
+                            <!-- widget-post-list startrt -->
+                            <!-- widget-post-list startrt -->
+                            <div class="widget-post-list">
+                                <a href="#" class="post-thumb">
+                                    <img src="assets/images/blog/post/2.png" alt="img" />
+                                </a>
+                                <div class="widget-post-content">
+                                    <h3 class="widget-sub-title">
+                                        <a href="#">Branding can play great role in Business</a>
+                                    </h3>
+                                    <p class="post-meta">September 05, 2021</p>
+                                </div>
+                            </div>
+                            <!-- widget-post-list startrt -->
+                            <!-- widget-post-list startrt -->
+                            <div class="widget-post-list">
+                                <a href="#" class="post-thumb">
+                                    <img src="assets/images/blog/post/3.png" alt="img" />
+                                </a>
+                                <div class="widget-post-content">
+                                    <h3 class="widget-sub-title">
+                                        <a href="#">Marketing training on new strategy </a>
+                                    </h3>
+                                    <p class="post-meta">September 02, 2021</p>
+                                </div>
+                            </div>
+                            <!-- widget-post-list startrt -->
+                        </div>
+                        <!-- sidebar-widget end -->
+
+                        <!-- sidebar-widget start -->
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">Archive</h3>
+                            <div class="widget-list">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        September. 2021<span>70</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        August, 2021<span>90</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        July, 2021<span>120</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        June, 2020<span>110</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        May, 2021<span>90</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        April, 2021<span>59</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        March, 2021<span>60</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        February, 2021<span>128</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- sidebar-widget end -->
+
+                        <!-- sidebar-widget start -->
+                        <div class="sidebar-widget">
+                            <h3 class="widget-title">Tags</h3>
+                            <div class="widget-tags">
+                                <a class="widget-tag-link" href="JavaScript:Void(0);">Corporate</a>
+                                <a class="widget-tag-link" href="JavaScript:Void(0);">Creative</a>
+                                <a class="widget-tag-link" href="JavaScript:Void(0);">interrior</a>
+                                <a class="widget-tag-link" href="JavaScript:Void(0);">Marketing</a>
+                                <a class="widget-tag-link" href="JavaScript:Void(0);">Business</a>
+                                <a class="widget-tag-link" href="JavaScript:Void(0);">Invest</a>
+                                <a class="widget-tag-link" href="JavaScript:Void(0);">Branding</a>
+                                <a class="widget-tag-link" href="JavaScript:Void(0);">Consultancy</a>
+                            </div>
+                        </div>
+
+                        <!-- sidebar-widget end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Section ENd -->
+
+    <!-- News letter Section Start -->
+    <section class="news-letter-section section-pb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-xl-6 mx-auto">
+                    <div class="title-section mb-10 text-center">
+                        <span class="sub-title">NEWSLETTER</span>
+                        <h3 class="title mb-0">
+                            Subscribe <span class="text-primary">Newsletter</span> &
+                            <br class="d-none d-xl-block" />get latest update...
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-10 mx-auto">
+                    <form id="mc-form" class="news-letter-form d-flex">
+                        <input id="mc-email" class="form-control" type="email" placeholder="Enter Email here" name="email" required="" />
+                        <button class="search-btn" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News letter Section End -->
+
+    <!-- <script src="assets/js/vendor/vendor.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/vendor/parallax.js"></script>
+    <script src="assets/js/plugins/plugins.min.js"></script>
+    <script src="assets/js/ajax-contact.js"></script>
+    <script src="assets/js/main.min.js"></script> -->
+    {% endblock %}
+
+

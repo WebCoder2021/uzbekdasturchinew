@@ -31,7 +31,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=100,null=True,blank=True,verbose_name='Ism')
     last_name = models.CharField(max_length=100,null=True,blank=True,verbose_name='Familiya')
     middle_name = models.CharField(max_length=100,null=True,blank=True,verbose_name='Sharif')
-    picture = models.ImageField(upload_to='user/',null=True,verbose_name='Rasm',blank=True,default='https://www.computerhope.com/issues/pictures/win10-user-account-default-picture.jpg')
+    picture = models.ImageField(upload_to='user/',null=True,verbose_name='Rasm',blank=True,default='user.webp')
     email = models.EmailField(max_length=200,null=True,blank=True,verbose_name='Email')
     location = models.CharField(max_length=250,null=True,blank=True,verbose_name='Manzil')
     created_at = models.DateTimeField(auto_now_add=True)
