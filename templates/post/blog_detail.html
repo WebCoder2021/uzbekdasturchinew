@@ -1,11 +1,42 @@
 {% extends 'home/main.html' %} {% load static %}
 
-{% block head %} {% endblock %}
+{% block head %}
+<style>
+    .likes{
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+    .like:hover, .dislike:hover{
+font-weight: 600;
+    }
+    .like, .dislike{
+        padding: 5px 10px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .like.has{
+        border-bottom: 1px solid blue;
+    }
+    .dislike.has{
+        border-bottom: 1px solid red;
+    }
+    .has {
+        font-weight: 900;
+    }
+    .like{
+        color: blue;
+    }
+    .dislike{
+        color: red;
+    }
+</style>
+{% endblock %}
 {% block content %}
     <!-- Banner Section Start -->
 
     <section class="banner-section position-relative">
-        <img class="banner-shape" src="assets/images/banner/shape1.png" alt="shape" />
+        <img class="banner-shape" src="static/assets/images/banner/shape1.png" alt="shape" />
         <div class="container">
             <div class="row">
                 <!-- Banner-Content Start -->
@@ -24,7 +55,7 @@
                 <div class="col-md-6 mt-7 mt-md-0">
                     <div class="banner-content scene banner-img">
                         <div data-depth="0.2">
-                            <img src="assets/images/blog/banner.png" alt="img" />
+                            <img src="static/assets/images/blog/banner.png" alt="img" />
                         </div>
                     </div>
                 </div>
@@ -61,6 +92,21 @@
                             {{post.content|safe}}
                         </div>
                         <!-- blog-details-grid end -->
+<div class="likes">
+    {% if request.user.is_authenticated %}
+    <form action="{% url 'blog_like' post.slug %}" method="POST" onclick="submit()">{% csrf_token %}
+        <div class="like {% if request.user in post.likes.all %}has{% endif %}"> {{post.likes.count}} <i class="fa-regular fa-thumbs-up"></i> Yoqdi</div>
+   </form>
+   \
+   <form action="{% url 'blog_dislike' post.slug %}" method="POST" onclick="submit()">{% csrf_token %}
+      <div class="dislike {% if request.user in post.dislikes.all %}has{% endif %}"> {{post.dislikes.count}} <i class="fa-regular fa-thumbs-down"></i> Yoqmadi</div>
+</form>
+    {% else %}
+    <div class="like"> {{post.likes.count}} <i class="fa-regular fa-thumbs-up"></i> Yoqdi</div> /
+    <div class="dislike"> {{post.dislikes.count}} <i class="fa-regular fa-thumbs-down"></i> Yoqmadi</div>
+    {% endif %}
+  </form>
+</div>
                         <!-- social-tags start -->
                         <div class="social-tags d-sm-flex justify-content-between align-items-center">
                             <p class="mb-4 mb-sm-0">
@@ -140,143 +186,50 @@
                 <!-- blog-details-content -->
                 <div class="col-xl-3 col-lg-4 mb-7 offset-xl-1">
                     <div class="widget-wrapper widget-wrapper-nl">
-                        <!-- sidebar-widget start -->
-                        <div class="sidebar-widget">
-                            <h3 class="widget-title">Search</h3>
-                            <div class="widget-content">
-                                <div class="widget-search">
-                                    <form action="#">
-                                        <input class="form-control" type="text" placeholder="Type your keyword..." />
-                                        <button class="widget-search-btn">
-                                            <i class="icofont-search"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- sidebar-widget end -->
 
                         <!-- sidebar-widget start -->
                         <div class="sidebar-widget">
-                            <h3 class="widget-title">Categories</h3>
+                            <h3 class="widget-title">Kategoriyalar</h3>
                             <div class="widget-list">
                                 <ul class="list-group list-group-flush">
+                                    {% for ct in categoryes %}
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Digital Solution<span>328</span>
+                                        {{ct.name}}<span>{{ct.count_posts}}</span>
                                     </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Business Plan<span>240</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Investment Planning<span>87</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Consultancy<span>20</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Marketing Policy<span>59</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Branding<span>72</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        Campaign & PR<span>128</span>
-                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
                         <!-- sidebar-widget end -->
                         <!-- sidebar-widget start -->
                         <div class="sidebar-widget">
-                            <h3 class="widget-title">popular post</h3>
+                            <h3 class="widget-title">Mashhur postlar</h3>
                             <!-- widget-post-list startrt -->
+                            {% for pst in popular_post %}
                             <div class="widget-post-list">
                                 <a href="#" class="post-thumb">
-                                    <img src="assets/images/blog/post/1.png" alt="img" />
+                                    <img src="{{pst.image.url}}" alt="img" />
                                 </a>
                                 <div class="widget-post-content">
                                     <h3 class="widget-sub-title">
-                                        <a href="#">Invesment policy for a Startup Business</a>
+                                        <a href="{% url 'blog_detail' pst.slug %}">{{pst.title}}</a>
                                     </h3>
-                                    <p class="post-meta">Septemer 10, 2021</p>
+                                    <p class="post-meta">{{pst.user.first_name}} - {{pst.create_date|date:"d M, Y"}}</p>
                                 </div>
                             </div>
-                            <!-- widget-post-list startrt -->
-                            <!-- widget-post-list startrt -->
-                            <div class="widget-post-list">
-                                <a href="#" class="post-thumb">
-                                    <img src="assets/images/blog/post/2.png" alt="img" />
-                                </a>
-                                <div class="widget-post-content">
-                                    <h3 class="widget-sub-title">
-                                        <a href="#">Branding can play great role in Business</a>
-                                    </h3>
-                                    <p class="post-meta">September 05, 2021</p>
-                                </div>
-                            </div>
-                            <!-- widget-post-list startrt -->
-                            <!-- widget-post-list startrt -->
-                            <div class="widget-post-list">
-                                <a href="#" class="post-thumb">
-                                    <img src="assets/images/blog/post/3.png" alt="img" />
-                                </a>
-                                <div class="widget-post-content">
-                                    <h3 class="widget-sub-title">
-                                        <a href="#">Marketing training on new strategy </a>
-                                    </h3>
-                                    <p class="post-meta">September 02, 2021</p>
-                                </div>
-                            </div>
+                            {% endfor %}
                             <!-- widget-post-list startrt -->
                         </div>
                         <!-- sidebar-widget end -->
 
-                        <!-- sidebar-widget start -->
-                        <div class="sidebar-widget">
-                            <h3 class="widget-title">Archive</h3>
-                            <div class="widget-list">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        September. 2021<span>70</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        August, 2021<span>90</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        July, 2021<span>120</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        June, 2020<span>110</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        May, 2021<span>90</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        April, 2021<span>59</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        March, 2021<span>60</span>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        February, 2021<span>128</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- sidebar-widget end -->
 
                         <!-- sidebar-widget start -->
                         <div class="sidebar-widget">
-                            <h3 class="widget-title">Tags</h3>
+                            <h3 class="widget-title">Taglar</h3>
                             <div class="widget-tags">
-                                <a class="widget-tag-link" href="JavaScript:Void(0);">Corporate</a>
-                                <a class="widget-tag-link" href="JavaScript:Void(0);">Creative</a>
-                                <a class="widget-tag-link" href="JavaScript:Void(0);">interrior</a>
-                                <a class="widget-tag-link" href="JavaScript:Void(0);">Marketing</a>
-                                <a class="widget-tag-link" href="JavaScript:Void(0);">Business</a>
-                                <a class="widget-tag-link" href="JavaScript:Void(0);">Invest</a>
-                                <a class="widget-tag-link" href="JavaScript:Void(0);">Branding</a>
-                                <a class="widget-tag-link" href="JavaScript:Void(0);">Consultancy</a>
+                                {% for tag in tags %}
+                                <a class="widget-tag-link">{{tag.name}}</a>
+                                {% endfor %}
                             </div>
                         </div>
 
@@ -288,37 +241,6 @@
     </section>
     <!-- Blog Section ENd -->
 
-    <!-- News letter Section Start -->
-    <section class="news-letter-section section-pb">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 col-xl-6 mx-auto">
-                    <div class="title-section mb-10 text-center">
-                        <span class="sub-title">NEWSLETTER</span>
-                        <h3 class="title mb-0">
-                            Subscribe <span class="text-primary">Newsletter</span> &
-                            <br class="d-none d-xl-block" />get latest update...
-                        </h3>
-                    </div>
-                </div>
-                <div class="col-xl-8 col-lg-10 mx-auto">
-                    <form id="mc-form" class="news-letter-form d-flex">
-                        <input id="mc-email" class="form-control" type="email" placeholder="Enter Email here" name="email" required="" />
-                        <button class="search-btn" type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- News letter Section End -->
-
-    <!-- <script src="assets/js/vendor/vendor.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/vendor/parallax.js"></script>
-    <script src="assets/js/plugins/plugins.min.js"></script>
-    <script src="assets/js/ajax-contact.js"></script>
-    <script src="assets/js/main.min.js"></script> -->
     {% endblock %}
 
 

@@ -9,6 +9,9 @@ from users.models import CustomUser
 
 class PostCategory(models.Model):
     name = models.CharField(max_length=100)
+    def count_posts(self):
+        return Post.objects.filter(category=self).count()
+
 
     def __str__(self):
         return self.name
@@ -41,10 +44,10 @@ class Post(models.Model):
         return self.title
     def likes(self):
         like = PostLike.objects.filter(post__title=self.title).first()
-        return like.users.count()
+        return like.users
     def dislikes(self):
         dislike = PostDisLike.objects.filter(post__title=self.title).first()
-        return dislike.users.count()
+        return dislike.users
     def comments(self):
         comment = Comment.objects.filter(post__title=self.title).all()
         return comment
