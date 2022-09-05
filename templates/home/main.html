@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buznex – Business Bootstrap 5 Template</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="static/assets/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/logo/uzbekdasturchilogo.png' %}" />
     <!-- <link rel="stylesheet" href="assets/css/vendor/simple-line-icons.css" />
 <link rel="stylesheet" href="assets/css/vendor/icofont.min.css" />
 <link rel="stylesheet" href="assets/css/vendor/metropolis.css" />
@@ -36,7 +36,7 @@
         <div class="modal-dialog offcanvas-dialog">
             <div class="modal-content">
                 <div class="modal-header offcanvas-header">
-                    <a class="offcanvas-logo" href="index.html"><img src="static/assets/images/logo/logo.png" alt="logo" /></a>
+                    <a class="offcanvas-logo" href="{% url 'home' %}"><img src="{% static 'assets/images/logo/uzbekdasturchilogo.png' %}" alt="logo" /></a>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -92,7 +92,7 @@
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="{% url 'home' %}"><img src="static/assets/images/logo/uzbekdasturchilogo.png" width="160px" alt="Site Logo" /></a>
+                        <a href="{% url 'home' %}"><img src="{% static 'assets/images/logo/uzbekdasturchilogo.png' %}" width="160px" alt="Site Logo" /></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -101,48 +101,10 @@
                 <div class="col text-end">
                     <nav class="main-menu d-none d-lg-block">
                         <ul class="d-flex">
-                            <li><a href="about.html">Biz haqimizda</a></li>
-                            <!-- <li>
-                                <a href="#">Service</a>
-
-                                <ul class="sub-menu">
-                                    <li class="sub-menu-item">
-                                        <a class="sub-menu-link" href="service.html">Service</a>
-                                    </li>
-                                    <li class="sub-menu-item">
-                                        <a class="sub-menu-link" href="single-service.html">single service</a>
-                                    </li>
-                                </ul>
-                            </li> -->
-                            <li>
-                                <a href="#">Pages</a>
-                                <ul class="sub-menu">
-                                    <li class="sub-menu-item">
-                                        <a class="sub-menu-link" href="faq.html">faq</a>
-                                    </li>
-                                    <li class="sub-menu-item">
-                                        <a class="sub-menu-link" href="team.html">team</a>
-                                    </li>
-                                </ul>
+                           <li>
+                            <a href="{% url 'posts' %}">Maqolalar</a>
                             </li>
-                            <li>
-                                <a href="#">Maqolalar</a>
-                                <ul class="sub-menu">
-                                    <li class="sub-menu-item">
-                                        <a class="sub-menu-link" href="{% url 'posts' %}">Blog</a>
-                                    </li>
-                                    <li class="sub-menu-item">
-                                        <a class="sub-menu-link" href="blog-grid-left-sidebar.html">blog grid left sidebar</a>
-                                    </li>
-                                    <li class="sub-menu-item">
-                                        <a class="sub-menu-link" href="blog-grid-right-sidebar.html">blog grid right sidebar</a>
-                                    </li>
-                                    <li class="sub-menu-item">
-                                        <a class="sub-menu-link" href="blog-details.html">blog details</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="{% url 'contact' %}">Aloqa</a></li>
                             <li><a href="{% url 'faq' %}">FAQ</a></li>
                         </ul>
                     </nav>
@@ -163,13 +125,13 @@
     <footer class="footer-section">
         <div class="footer-top position-relative">
 
-            <img class="footer-shape" src="static/assets/images/footer/1.png" alt="shape">
+            <!-- <img class="footer-shape" src="{% static 'assets/images/logo/uzbekdasturchilogo.png' %}" alt="shape"> -->
             <div class="container">
                 <div class="row mb-n7">
                     <div class="col-lg-3 col-sm-6 mb-7">
                         <div class="footer-widget">
                             <a class="footer-logo mb-9" href="index.html">
-                                <img src="static/assets/images/logo/logo-footer.png" alt="footer-logo" />
+                                <img src="{% static 'assets/images/logo/uzbekdasturchilogo.png' %}" alt="footer-logo" />
                             </a>
                             <p>
                                 Pleasure rationally encounter consequences that extremely painful.
@@ -249,8 +211,8 @@
                             <p>
                                 Copyright &copy; <span id="currentYear"></span>
                                 Made with <i class="icofont-heart-alt"></i> By
-                                <a href="https://hasthemes.com/" target="_blank">
-                                    HasThemes</a>, All Rights Reserved
+                                <a href="t.me/webcoder_bukhara" target="_blank">
+                                    WebCoder Bukhara</a>, All Rights Reserved
                             </p>
                         </div>
                     </div>
