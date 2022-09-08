@@ -43,11 +43,15 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     def likes(self):
-        like = PostLike.objects.filter(post__title=self.title).first()
-        return like.users
+        if PostLike.objects.filter(post__title=self.title).exists():
+            like = PostLike.objects.filter(post__title=self.title).first()
+            return like.users
+        else: return 0
     def dislikes(self):
-        dislike = PostDisLike.objects.filter(post__title=self.title).first()
-        return dislike.users
+        if PostDisLike.objects.filter(post__title=self.title).exists():
+            dislike = PostDisLike.objects.filter(post__title=self.title).first()
+            return dislike.users
+        else: return 0
     def comments(self):
         comment = Comment.objects.filter(post__title=self.title).all()
         return comment

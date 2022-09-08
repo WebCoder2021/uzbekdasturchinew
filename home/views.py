@@ -1,7 +1,7 @@
 
 from django.shortcuts import render
 from blogPost.models import Post
-from .models import FAQ, Email_send
+from .models import FAQ, Email_send, SendMessages
 # Create your views here.
 def home(request):
     context = {}
@@ -18,9 +18,18 @@ def home(request):
 
 def faq(request):
     context = {}
-    context['FAQs'] = FAQ.objects.all()[:6]
+    context['faqs'] = FAQ.objects.all()[:6]
     return render(request,'home/faq.html',context)
 
 def contact(request):
     context = {}
+    if request.method == 'POST':
+        email = request.POST.get('email',False)
+        message = request.POST.get('message',False)
+        full_name = request.POST.get('name',False)
+        if email and message and full_name:
+            ms = SendMessages.objects.create(email=email, message=message, full_name=full_name)
+            ms.save()
+            context['ms'] = ms
+
     return render(request,'home/contact.html',context)

@@ -15,3 +15,12 @@ class Email_send(models.Model):
     def __str__(self):
         return self.email
 
+class SendMessages(models.Model):
+    email = models.CharField(max_length=255)
+    full_name = models.CharField(max_length=255)
+    message = models.TextField(max_length=500)
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
