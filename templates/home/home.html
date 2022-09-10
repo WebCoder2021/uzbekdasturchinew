@@ -5,7 +5,11 @@
     <link rel="stylesheet" href="{% static 'assets/css/vendor/vendor.min.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/plugins/plugins.min.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}" />
-
+<style>
+    .feature-card.bg-light i{
+        font-size: 100px;
+    }
+</style>
 
 {% endblock %}
 
@@ -35,14 +39,14 @@
                                 <br />
                 bilan tabriklaymiz
                             </h2>
-                            <a href="single-service.html" class="btn btn-lg animated delay1 btn-dark btn-hover-dark me-4 mb-3 mb-sm-0">Get Started</a>
-                            <a href="marketing-policy.html" class="btn btn-lg animated delay2 btn-secondary btn-hover-secondary mb-3 mb-sm-0">Book a Meeting</a>
+                            <!-- <a href="single-service.html" class="btn btn-lg animated delay1 btn-dark btn-hover-dark me-4 mb-3 mb-sm-0">Get Started</a>
+                            <a href="marketing-policy.html" class="btn btn-lg animated delay2 btn-secondary btn-hover-secondary mb-3 mb-sm-0">Book a Meeting</a> -->
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="hero-img scene mt-10 mt-lg-0">
                             <div data-depth="0.2">
-                                <img class="animated" src="static/assets/images/slider/slide2.png" alt="" />
+                                <img class="animated" src="{% static 'assets/images/slider/slide2.png' %}" alt="" />
                             </div>
                         </div>
                     </div>
@@ -54,7 +58,7 @@
     <!-- Hero Slider End -->
 
     <!-- Brand Slider Satrt -->
-    <div class="brand-section section-py">
+   {% comment %} <div class="brand-section section-py">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -101,12 +105,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>  {% endcomment %} 
     <!-- Brand Slider End -->
 
     <!-- Feature section Start -->
     <section class="feature-section section-pb position-relative">
-        <img class="path-img" src="static/assets/images/feature/shape.png" alt="images_not_found">
+        <img class="path-img" src="{% static 'assets/images/feature/shape.png' %}" alt="images_not_found">
         <div class="container custom-container">
             <div class="row g-0 align-items-center">
                 <!-- title section start -->
@@ -116,10 +120,13 @@
                         <h3 class="title">
                             Biz bilan <span class="text-primary">IT olamiga</span> sayohat qilishga toyyormisiz?
                         </h3>
+                        <p style="display: flex;">
+                            <h5><span class="text-primary" style="font-weight: 800;">Bir jamoa... Bir maqsad... Bir harakat...</span></h5><br>
+                         </p>
                         <p class="mb-10">
                             Yorqin kelajak sari qo'yilgan birinchi qadamingiz bilan tabriklaymiz
                         </p>
-                        <a href="single-service.html" class="btn btn-lg btn-dark btn-hover-dark">Get Started</a>
+                        <!-- <a href="single-service.html" class="btn btn-lg btn-dark btn-hover-dark">Get Started</a> -->
                     </div>
                 </div>
                 <!-- title section end -->
@@ -131,7 +138,8 @@
                             <div class="feature-card bg-light">
                                 <span class="card-shape card-shape-light"></span>
                                 <span class="card-shape card-shape-dark"></span>
-                                <img class="logo" src="static/assets/images/feature/logo/1.png" alt=" feature logo" />
+                                <!-- <img class="logo" src="static/assets/images/feature/logo/1.png" alt=" feature logo" /> -->
+                                <i class="fa-solid fa-computer"></i>
                                 <h4 class="title my-6">
                                     <a href="single-service.html">Kompyuter savodxonligi</a>
                                 </h4>
@@ -144,7 +152,8 @@
                             <div class="feature-card bg-light active">
                                 <span class="card-shape card-shape-light"></span>
                                 <span class="card-shape card-shape-dark"></span>
-                                <img class="logo" src="static/assets/images/feature/logo/2.png" alt=" feature logo" />
+                                <!-- <img class="logo" src="static/assets/images/feature/logo/2.png" alt=" feature logo" /> -->
+                                <i class="fa-solid fa-network-wired"></i>
                                 <h4 class="title my-6">
                                     <a href="single-service.html">Web dasturlash</a>
                                 </h4>
@@ -157,7 +166,8 @@
                             <div class="feature-card bg-light">
                                 <span class="card-shape card-shape-light"></span>
                                 <span class="card-shape card-shape-dark"></span>
-                                <img class="logo" src="static/assets/images/feature/logo/3.png" alt=" feature logo" />
+                                <!-- <img class="logo" src="static/assets/images/feature/logo/3.png" alt=" feature logo" /> -->
+                                <i class="fa-solid fa-mobile"></i>
                                 <h4 class="title my-6">
                                     <a href="single-service.html">Android dasturlash</a>
                                 </h4>
@@ -172,7 +182,8 @@
                             <div class="feature-card bg-light">
                                 <span class="card-shape card-shape-light"></span>
                                 <span class="card-shape card-shape-dark"></span>
-                                <img class="logo" src="static/assets/images/feature/logo/1.png" alt=" feature logo" />
+                                <!-- <img class="logo" src="static/assets/images/feature/logo/1.png" alt=" feature logo" /> -->
+                                <i class="fa-solid fa-language"></i>
                                 <h4 class="title my-6">
                                     <a href="single-service.html">Rus tili</a>
                                 </h4>
@@ -185,7 +196,8 @@
                             <div class="feature-card bg-light active">
                                 <span class="card-shape card-shape-light"></span>
                                 <span class="card-shape card-shape-dark"></span>
-                                <img class="logo" src="static/assets/images/feature/logo/2.png" alt=" feature logo" />
+                                <!-- <img class="logo" src="static/assets/images/feature/logo/2.png" alt=" feature logo" /> -->
+                                <i class="fa-solid fa-globe"></i>
                                 <h4 class="title my-6">
                                     <a href="single-service.html">Ingliz tili</a>
                                 </h4>
@@ -197,9 +209,10 @@
                             <div class="feature-card bg-light">
                                 <span class="card-shape card-shape-light"></span>
                                 <span class="card-shape card-shape-dark"></span>
-                                <img class="logo" src="static/assets/images/feature/logo/3.png" alt=" feature logo" />
+                                <!-- <img class="logo" src="static/assets/images/feature/logo/3.png" alt=" feature logo" /> -->
+                                <i class="fa-solid fa-location-crosshairs"></i>
                                 <h4 class="title my-6">
-                                    <a href="single-service.html">Best Service</a>
+                                    <a href="single-service.html">Freelanserlik</a>
                                 </h4>
                                 <p>
                                 </p>
@@ -246,7 +259,7 @@
                 <div class="col-xl-6 order-first order-lg-last col-lg-6 mb-7 offset-xl-1">
                     <div class="about-photo scene text-center text-lg-left">
                         <div data-depth="0.2">
-                            <img src="static/assets/images/about/1.png" alt="photo" />
+                            <img src="{% static 'assets/images/about/1.png' %}" alt="photo" />
                         </div>
                     </div>
                 </div>
@@ -254,7 +267,7 @@
             </div>
         </div>
         <!-- about-shape satrt -->
-        <img class="about-shape" src="static/assets/images/about/shape.png" alt="bg-shape" />
+        <img class="about-shape" src="{% static 'assets/images/about/shape.png' %}" alt="bg-shape" />
         <!-- about-shape end -->
     </section>
     <!-- About Us Section End -->
@@ -269,9 +282,6 @@
                         <h3 class="title">
                             Bizning <span class="text-primary">xizmatlar</span>
                         </h3>
-                        <p style="display: flex;">
-                           <h5><span class="text-primary" style="font-weight: 900;">Bir jamoa...Bir maqsad...Bir harakat...</span></h5><br>
-                        </p>
                     </div>
                 </div>
             </div>
@@ -281,7 +291,7 @@
                 <div class="col-md-6 col-xl-4 mb-7">
                     <div class="service-media-wrapper media-spacing-left">
                         <div class="service-media">
-                            <img class="logo" src="static/assets/images/service/icon/1.png" alt=" service logo" />
+                            <img class="logo" src="{% static 'assets/images/service/icon/1.png' %}" alt=" service logo" />
                             <div class="service-media-body">
                                 <h4 class="title">
                                     <a href="digital-solution.html">Freelance platformalar</a>
@@ -293,7 +303,7 @@
                             </div>
                         </div>
                         <div class="service-media">
-                            <img class="logo" src="static/assets/images/service/icon/2.png" alt=" service logo" />
+                            <img class="logo" src="{% static 'assets/images/service/icon/2.png' %}" alt=" service logo" />
                             <div class="service-media-body">
                                 <h4 class="title">
                                     <a href="business-plan.html">Tajriba 6+</a>
@@ -310,13 +320,13 @@
 
                 <div class="col-xl-4 mb-7 order-md-1 order-xl-0">
                     <div class="service-media-img text-center">
-                        <img src="static/assets/images/service/media.png" alt="images_not_found">
+                        <img src="{% static 'assets/images/service/media.png' %}" alt="images_not_found">
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-4 mb-7">
                     <div class="service-media-wrapper media-spacing-right">
                         <div class="service-media">
-                            <img class="logo" src="static/assets/images/service/icon/3.png" alt=" service logo" />
+                            <img class="logo" src="{% static 'assets/images/service/icon/3.png' %}" alt=" service logo" />
                             <div class="service-media-body">
                                 <h4 class="title">
                                     <a href="creative-strategy.html">Top 10 platformalar</a>
@@ -328,7 +338,7 @@
                             </div>
                         </div>
                         <div class="service-media">
-                            <img class="logo" src="static/assets/images/service/icon/4.png" alt=" service logo" />
+                            <img class="logo" src="{% static 'assets/images/service/icon/4.png' %}" alt=" service logo" />
                             <div class="service-media-body">
                                 <h4 class="title"><a href="branding.html">tugallangan ishlar 6,000+ </a></h4>
                                 <p>
@@ -349,7 +359,7 @@
     <!-- Service Section ENd -->
 
     <!-- Testimonial Section Satrt -->
-    <section class="testimonial-section section-py position-relative">
+ {% comment %}   <section class="testimonial-section section-py position-relative">
         <img class="tetimonial-shape" src="static/assets/images/testimonial/shape.png" alt="">
         <div class="container">
             <div class="row mb-n7">
@@ -449,10 +459,13 @@
 
             </div>
         </div>
-    </section>
+    </section>{% endcomment %} 
     <!-- Testimonial Section End -->
 
     <!-- Funfact Section Start -->
+    <br>
+    <br>
+    <br>
     <section class="funfact-section section-pb position-relative mt-10 mt-lg-0">
         <div class="container">
             <div class="row mb-n7">
@@ -460,7 +473,7 @@
                 <div class="col-md-3 col-6 mb-7">
                     <div class="fanfact text-md-left text-center">
                         <span class="title"> <span class="counter">1200</span>+</span>
-                        <h6 class="sub-title">Projects done</h6>
+                        <h6 class="sub-title">Tugallangan loyihalar</h6>
                     </div>
                 </div>
                 <!-- fanfact end -->
@@ -468,7 +481,7 @@
                 <div class="col-md-3 col-6 mb-7">
                     <div class="fanfact text-center">
                         <span class="title"><span class="counter">2354</span>+</span>
-                        <h6 class="sub-title">Happy Clients</h6>
+                        <h6 class="sub-title">Baxtli mijozlar</h6>
                     </div>
                 </div>
                 <!-- fanfact end -->
@@ -476,7 +489,7 @@
                 <div class="col-md-3 col-6 mb-7">
                     <div class="fanfact text-center">
                         <span class="title"> <span class="counter">3299</span>+</span>
-                        <h6 class="sub-title">Cup Coffee</h6>
+                        <h6 class="sub-title">Bir chashka qahva</h6>
                     </div>
                 </div>
                 <!-- fanfact end -->
@@ -484,7 +497,7 @@
                 <div class="col-md-3 col-6 mb-7">
                     <div class="fanfact text-md-right text-center">
                         <span class="title"><span class="counter">101</span>+</span>
-                        <h6 class="sub-title">Award Wins</h6>
+                        <h6 class="sub-title">Mukofotlar</h6>
                     </div>
                 </div>
                 <!-- fanfact end -->
@@ -498,7 +511,7 @@
     <!-- Funfact Section End -->
 
     <!-- Team Section Start -->
-    <section class="team-section section-pb overflow-hidden" id="team-section">
+   {% comment %} <section class="team-section section-pb overflow-hidden" id="team-section">
         <div class="container position-relative">
             <div class="row align-items-center">
                 <div class="col-lg-5">
@@ -540,7 +553,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>{% endcomment %}
 
     <!-- Team Section End -->
 
