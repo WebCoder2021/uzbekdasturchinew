@@ -1,0 +1,123 @@
+.profile {
+  background-color: #fff;
+  display: grid;
+  box-shadow: 3px 3px 3px #e6e6ff;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  padding: 40px;
+}
+.profile .img {
+  margin: 0 10px;
+  border-right: 1px solid rgb(109, 109, 101);
+}
+.profile .img img {
+  width: 100%;
+  max-width: 200px;
+  max-height: 200px;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 7px;
+}
+.profile .info {
+  border-right: 1px solid rgb(109, 109, 101);
+  margin: 0 10px;
+}
+.profile .info .full_name {
+  font-weight: 600;
+  font-size: 30px;
+}
+.profile .info .btn, .profile .info .btn a {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  color: #fff;
+}
+.profile .info .edit {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.profile .info .edit .change_info {
+  background: #59e3a7;
+  border-radius: 6px;
+}
+.profile .info .edit .change_img {
+  padding: 10px;
+  margin: 10px;
+  color: #000;
+  font-size: 25px;
+}
+.profile .info .edit .change_img label {
+  cursor: pointer;
+}
+.profile .info .edit .change_img form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile .info p {
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+.profile .info p span {
+  display: block;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 10px;
+  color: #666;
+}
+
+.err, .msg {
+  font-weight: 600;
+  margin-bottom: 20px;
+  -webkit-animation: noti 3s linear;
+          animation: noti 3s linear;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  opacity: 0;
+}
+
+.err {
+  color: #f00;
+}
+
+.msg {
+  color: rgb(2, 116, 2);
+}
+
+@-webkit-keyframes noti {
+  from {
+    opacity: 0;
+    display: none;
+  }
+  to {
+    opacity: 1;
+    display: block;
+  }
+}
+
+@keyframes noti {
+  from {
+    opacity: 0;
+    display: none;
+  }
+  to {
+    opacity: 1;
+    display: block;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .profile {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 20vw;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .profile {
+    grid-template-columns: 1fr;
+    margin-top: 40vw;
+  }
+}/*# sourceMappingURL=user_profile.css.map */

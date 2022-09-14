@@ -1,0 +1,13 @@
+form{
+    width: 100%;
+    background-color: #fff;
+    padding: 2vw 5vw;
+}
+.div-form{
+    margin: 10vw; display: grid; grid-template-columns: 1fr 1fr;
+}
+@media screen and (max-width: 800px) {
+    .div-form{
+        grid-template-columns: 1fr;
+    }
+}

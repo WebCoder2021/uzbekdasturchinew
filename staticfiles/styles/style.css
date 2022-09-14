@@ -1,0 +1,195 @@
+.user-card {
+  width: 300px;
+  height: 400px;
+  box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: box-shadow 0.2s ease-in;
+  cursor: pointer;
+}
+
+.user-card:hover {
+  box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.user-card .user-cover {
+  height: 150px;
+  width: 100%;
+  position: relative;
+  background-image: url(https://images.pexels.com/photos/5969/wood-nature-forest-bridge.jpg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb);
+  background-position: center;
+  background-size: cover;
+}
+
+.user-card .user-cover .user-avatar {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: -35px;
+  border: 2px solid #fff;
+}
+
+.user-card .user-details {
+  text-align: center;
+  margin-top: 35px;
+  margin-bottom: 25px;
+  width: 80%;
+}
+
+.user-card .user-details .user-name {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.user-card .user-details .user-email {
+  font-size: 14px;
+  color: #0f5fc0;
+  font-weight: 500;
+}
+
+.user-card .user-details .user-text {
+  margin-top: 5px;
+  font-size: 15px;
+  color: #666;
+}
+
+.user-card .contact-user {
+  margin-bottom: 15px;
+  height: 35px;
+  width: 80%;
+  border: 0;
+  color: white;
+  font-weight: bold;
+  background: #035f7d;
+  letter-spacing: 0.5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@-webkit-keyframes gradient-animation {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes gradient-animation {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+.logoutContainer {
+  padding: 1.5vw 3vw;
+  margin-top: 5vw;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.logoutContainer h1 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 500;
+}
+.logoutContainer h2 {
+  margin: 30px 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.buttons .btn {
+  margin-left: 2rem;
+}
+.buttons .btn a {
+  text-decoration: none;
+  text-transform: uppercase;
+  outline: none;
+  padding: 10px 17px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 500;
+  border: 1px solid #3181ff;
+  color: #3181ff;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.buttons .btn a:hover {
+  background: #3181ff;
+  color: #fff;
+}
+
+.specializations {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+.specializations .cardbody {
+  margin: 0 20px;
+}
+.specializations .cardbody a {
+  color: #666;
+  font-size: 18px;
+}
+.specializations .card {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding: 20px;
+  background: #FFFFFF;
+  border: 1px solid #ECEDF2;
+  border-radius: 10px;
+  padding: 19px;
+  transition: all ease 0.2s;
+}
+.specializations .card:hover .icon {
+  background-color: #3180ff;
+  color: #fff;
+}
+.specializations .card .icon,
+.specializations .card .content {
+  transition: all ease 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.specializations .card .icon {
+  border-radius: 10px;
+  padding: 30px;
+  background: #ECEDF2;
+  color: #3180ff;
+  font-size: 36px;
+  border-radius: 10px;
+}
+.specializations .card .content {
+  margin: 0 20px;
+  flex-direction: column;
+  align-items: start;
+}
+.specializations .card .content .title {
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+.specializations .card .content .title a {
+  color: #202124;
+}
+.specializations .card .content .title:hover a {
+  color: #3181ff;
+}
+.specializations .card .content .num {
+  margin-top: 10px;
+  font-weight: 400;
+  color: #696969;
+}/*# sourceMappingURL=style.css.map */

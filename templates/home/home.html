@@ -314,7 +314,6 @@
                                 </p>
                             </div>
                         </div>
-                       
                     </div>
                 </div>
 
@@ -589,9 +588,9 @@
                             </a>
                         </div>
                         <div class="blog-content">
-                            <a href="#"><span class="blog-meta">{{post.user.first_name}} - {{post.update_date|date:"d M,  Y"}}</span></a>
+                            <a href="{% url 'blog_detail' post.slug %}"><span class="blog-meta">{{post.user.first_name}} - {{post.update_date|date:"d M,  Y"}}</span></a>
                             <h3 class="title">
-                                <a href="">{{post.title}}</a>
+                                <a href="{% url 'blog_detail' post.slug %}">{{post.title}}</a>
                             </h3>
                         </div>
                     </div>
