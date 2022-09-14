@@ -3,7 +3,6 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from users.models import CustomUser
-from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -15,7 +14,9 @@ def log_in(request):
         password = post.get('password', False)
         user = post.get('user', False)
         if user:
-            user = CustomUser.objects.filter(id=user).first()
+            user1 = CustomUser.objects.filter(id=user).first()
+            login(request,user1)
+            return redirect('home')
         else:
             password2 = post.get('password2', False)
             if password == password2:
@@ -28,24 +29,26 @@ def log_in(request):
                 position = post.get('position', False)
                 if first_name and last_name and middle_name and location and company_name and position:
                     user = CustomUser.objects.create(
-                        phone=phone, first_name=first_name, last_name=last_name, middle_name=middle_name,company_name=company_name,position=position,location=location)
+                        phone=phone, first_name=first_name, last_name=last_name, middle_name=middle_name)
                     if email:
                         user.email = email
+                    if location:
+                        user.location = location
                     user.set_password(password)
                     user.save()
+                    print('user')
+                    sign_in = authenticate(request, phone=phone, password=password)
+                    if sign_in is not None:
+                        login(request,user)
+                        return redirect('home')
+                    else: context['error'] = 'Login yoki parol xato'
                 else: context['error'] = "Ma'lumotlar to'liq kiritilmadi"
             else:
                 context['error'] = "Qayta kiritilgan parol xato"
                 return render(request, 'users/login.html', context)
-            sign_in = authenticate(request, phone=phone, password=password)
-            if sign_in is not None:
-                            login(request,user)
-                            return redirect('home')
-            else: context['error'] = 'Login yoki parol xato'
     return render(request, 'users/login.html',context)
 def logout_view(request):
     context = {}
-    context['usefull_links'] = Useful_links.objects.all().order_by('num_id')
     msg =  request.GET.get('logout',False)
     if msg and msg == "true":
         logout(request)

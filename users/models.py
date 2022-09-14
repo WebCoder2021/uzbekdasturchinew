@@ -60,12 +60,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         if self.middle_name:
             ful_name += ' ' + self.middle_name
         return  ful_name
-    def get_absolute_url(self):
-        return f'/users/{self.id}'
 
-    def get_update_url(self):
-        return f'/users/{self.id}/update'
 
-    def get_delete_url(self):
-        return f'/users/{self.id}/delete'
 
