@@ -1,0 +1,77 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'styles/users/user_profile.css' %}">
+  <script src="https://kit.fontawesome.com/92d9a36319.js" crossorigin="anonymous"></script>
+  <title>Profil </title>
+</head>
+
+<body>
+  <div class="sidebar open">
+    <a href="{% url 'home' %}" class="logo-details">
+      <img src="{% static 'logo.png' %}" id="btn" width="50" alt="">
+      <div class="logo_name">BuxDu Karyera</div>
+    </a>
+    <ul class="nav-list">
+      <li>
+        <a href="#" style="background-color: #F0F3ff;" class="active">
+          <i class='fa-solid fa-briefcase'></i>
+          <span class="links_name">Vakansiyalarim</span>
+        </a>
+        <span class="tooltip">Vakansiyalarim</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa-regular fa-file"></i>
+          <span class="links_name">Rezyumelarim</span>
+        </a>
+        <span class="tooltip">Rezyumelarim</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa-regular fa-plus"></i>
+          <span class="links_name">Vakansiya joylash</span>
+        </a>
+        <span class="tooltip">Vakansiya joylash</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa-regular fa-plus"></i>
+          <span class="links_name">Tanlangan vakansiyalar</span>
+        </a>
+        <span class="tooltip">Tanlangan vakansiyalar</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa-regular fa-comments"></i>
+          <span class="links_name">Qo'llab-Quvvatlash</span>
+        </a>
+        <span class="tooltip">Qo'llab-Quvvatlash</span>
+      </li>
+      <li class="top" style="margin-top: 455px;">
+        <a href="#">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span class="links_name">Chiqish</span>
+        </a>
+        <span class="tooltip">Chiqish</span>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <div class="text">Dashboard</div>
+  </section>
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let closeBtn = document.querySelector("img#btn");
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      menuBtnChange();
+    });
+  </script>
+</body>
+
+</html>

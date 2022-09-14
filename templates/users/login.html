@@ -1,0 +1,104 @@
+{% extends 'home/main.html' %}{% load static %}
+{% block head %}
+<!-- <link rel="stylesheet" href="{% static 'styles/base.css' %}"> -->
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+<link rel="stylesheet" href="{% static 'styles/login.css' %}">
+{% endblock %}
+{% block content %}
+<form style="padding: 60px; margin: 5vw;" action="" method="POST">{% csrf_token %}
+    <div style="border-radius:3px;" class="login">
+        <h1>Kirish (Ro'yxatdan o'tish)</h1>
+        <p style="color: red;">{{error}}</p>
+        <br>
+        <div class="inputs phone">
+            <span>+998</span>
+            <input type="text" name="phone" id="phone" required>
+            <label for="">Telefon raqam </label>
+        </div>
+        <div class="register" style="display: none;">
+            <div class="inputs">
+                <input type="text" name="first_name" id="">
+                <label for="">Ism </label>
+            </div>
+            <div class="inputs">
+                <input type="text" name="last_name" id="">
+                <label for="">Familiya </label>
+            </div>
+            <div class="inputs">
+                <input type="text" name="middle_name" id="">
+                <label for="">Sharif </label>
+            </div>
+            <div class="inputs">
+                <input type="text" name="email" id="">
+                <label for="">Elektron pochta </label>
+            </div>
+            <div class="inputs">
+                <input type="text" name="location" id="">
+                <label for="">Manzil </label>
+            </div>
+            <div class="inputs">
+                <input type="text" name="company_name" id="">
+                <label for="">Tashkilot(muasassa nomi) </label>
+            </div>
+            <div class="inputs">
+                <input type="text" name="position" id="">
+                <label for="">Lavozim </label>
+            </div>
+        </div>
+        <input type="hidden" name="user">
+        <div class="inputs">
+            <input type="password" class="password" name="password" id="" required>
+            <label for=""> Parol </label>
+            <img class="passImg" src="{% static 'eye.svg' %}" alt="" onclick="passwordShow('.password','.passImg')">
+        </div>
+        <div class="registerPass" style="display: none;">
+            <div class="inputs">
+                <input type="password" class="password2" name="password2" id="">
+                <label for="">Parolni qayta kiriting</label>
+                <img class="passImg2" src="{% static 'eye.svg' %}" alt=""
+                    onclick="passwordShow('.password2','.passImg2')">
+            </div>
+        </div>
+        <div class="sub">
+            <button type="submit" class="btn btn-lg animated delay1 btn-dark btn-hover-dark me-4 mb-3 mb-sm-0">Kirish</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
+{% block script %}
+<script>
+    document.querySelector("input[name='phone']").addEventListener('keyup', function (e) {
+        e.target.value = e.target.value.substring(0, 9)
+        if (e.target.value.length === 9) {
+            fetch(`{% url 'check_user' %}?phone=${e.target.value}`).then(res => res.json()).then(res => {
+                console.log(res)
+                if (!res.user) {
+                    document.querySelector('.register').style.display = 'block';
+                    document.querySelector('.registerPass').style.display = 'block';
+                }
+                else {
+                    document.querySelector("input[name='user']").value = res.user;
+                }
+            })
+        }
+        else {
+            document.querySelector('.register').style.display = 'none';
+            document.querySelector('.registerPass').style.display = 'none';
+        }
+    })
+</script>
+<script>
+    function passwordShow(cls, img) {
+        let pass = document.querySelector(cls);
+        let passImg = document.querySelector(img);
+        if (pass.type === "password") {
+            pass.type = "text";
+            passImg.src = "{% static 'eye-hidden.svg' %}"
+        } else {
+            pass.type = "password";
+            passImg.src = "{% static 'eye.svg' %}"
+        }
+    }
+</script>
+{% endblock %}

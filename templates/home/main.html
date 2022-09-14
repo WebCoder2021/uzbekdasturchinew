@@ -47,6 +47,7 @@
                         <li><a href="{% url 'posts' %}">Maqolalar</a></li>
                         <li><a href="{% url 'contact' %}">Aloqa</a></li>
                         <li><a href="{% url 'faq' %}">FAQ</a></li>
+                        <li><a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i> Kirish</a></li></a></li>
                     </ul>
 
 
@@ -76,6 +77,12 @@
                             </li>
                             <li><a href="{% url 'contact' %}">Aloqa</a></li>
                             <li><a href="{% url 'faq' %}">FAQ</a></li>
+                            {% if request.user.is_authenticated %}
+                            {% if request.user.is_staff %}<li><a href="{% url 'admin:index' %}"><i class="fa-solid fa-right-to-bracket"></i> Admin</a></li></a></li>
+                            {% else %} <li>+998 {{request.user.phone}}</li> {% endif %}
+                            {% else %}
+                            <li><a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i> Kirish</a></li></a></li>
+                            {% endif %}
                         </ul>
                     </nav>
                     <button class="toggle" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -131,7 +138,7 @@
                                 <li><a class="footer-link" href="{% url 'contact' %}">Aloqa</a></li>
                                 <li><a class="footer-link" href="{% url 'home' %}#about-us">Biz haqimizdan</a></li>
                                 <li><a class="footer-link" href="{% url 'home' %}#services">Bizning xizmatlar</a></li>
-                                <li><a class="footer-link" href="{% url 'home' %}#team-section">Bizning jamoa </a></li>
+                                <li><a class="footer-link" href="{% url 'admin:index' %}">Admintion</a></li>
                             </ul>
                         </div>
                     </div>
@@ -148,19 +155,16 @@
                     <div class="col-lg-3 col-sm-6 mb-7">
                         <div class="footer-widget">
                             <h4 class="title">Bog'lanish</h4>
-                            <p>245 Southern Street, Apt. 147 New York, USA</p>
+                            <p>Buxoro shahar Piridasgir yo’l  yoqasida joylashgan majmua</p>
                             <ul class="address">
                                 <li>
-                                    <a class="address-link" href="tel:+12354569874">+12354 569 874</a>
+                                    <a class="address-link" href="tel:+998956001130">+998956001130</a>
                                 </li>
                                 <li>
-                                    <a class="address-link" href="tel:+98745612398">+98745 612 398</a>
+                                    <a class="address-link" href="tel:+998996731156">+998996731156</a>
                                 </li>
                                 <li>
-                                    <a class="address-link" href="mailto:info@example.com">info@example.com</a>
-                                </li>
-                                <li>
-                                    <a class="address-link" href="mailto:info@example.com">www.example.com</a>
+                                    <a class="address-link" href="ozbekdasturchi@gmail.com">ozbekdasturchi@gmail.com</a>
                                 </li>
                             </ul>
                         </div>
@@ -212,7 +216,7 @@
     <script src="{% static 'assets/js/plugins/plugins.min.js' %}"></script>
     <script src="{% static 'assets/js/ajax-contact.js' %}"></script>
     <script src="{% static 'assets/js/main.min.js' %}"></script>
-
+{% block script %}{% endblock %}
 </body>
 
 </html>

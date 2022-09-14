@@ -1,0 +1,34 @@
+.comment{
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #60686f;
+    // background-color: #fff;
+    padding: 14px 0;
+    .userImg{
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+    }
+    .info{
+        margin-bottom: 15px;
+        .infoReq{
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+        .infoReq1{
+            color: #757b80;
+            margin: 5px 0;
+        }
+        .date{
+            color: #757b80;
+            font-size: 12px;
+        }
+    }
+}
+    button{
+        float: right;
+    }
+textarea{
+    margin-top: 30px;
+}

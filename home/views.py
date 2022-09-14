@@ -33,3 +33,6 @@ def contact(request):
             context['ms'] = ms
 
     return render(request,'home/contact.html',context)
+
+def bad_request(request,exception=None):
+    return render(request,'404.html')

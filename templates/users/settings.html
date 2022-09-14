@@ -1,0 +1,109 @@
+{% extends 'users/user_base.html' %}{% load i18n %}{% load static %}
+{% block head %}
+<title>Profil ma'lumotlari</title>
+<link rel="stylesheet" href="{% static 'styles/users/user_profile.css' %}">
+<link rel="stylesheet" href="{% static 'styles/users/user_profile_edit.css' %}">
+<script src="https://kit.fontawesome.com/92d9a36319.js" crossorigin="anonymous"></script>
+{% endblock %}
+{% block content %}
+<h1>Sozlamalar</h1>
+<p class="err">{{err}}</p>
+<p class="msg">{{msg}}</p>
+<form method="POST">{% csrf_token %}
+        <div class="item">
+            <div class="lable">
+                <label for="">Ism</label>
+            </div>
+            <div class="itm">
+                <input type="text" name="first_name"  value="{{request.user.first_name}}" required>
+            </div>
+        </div>
+        <div class="item">
+            <div class="lable">
+                <label for="">Familya</label>
+            </div>
+            <div class="itm">
+                <input type="text" name="last_name"  value="{{request.user.last_name}}" required>
+            </div>
+        </div>
+        <div class="item">
+            <div class="lable">
+                <label for="">Otasining ismi</label>
+            </div>
+            <div class="itm">
+                <input type="text" name="middle_name" value="{{request.user.middle_name}}" required>
+            </div>
+        </div>
+    <div class="item">
+        <div class="lable">
+            <label for="">Email</label>
+        </div>
+        <div class="itm">
+            <input type="email" name="email" value="{{request.user.email}}" required>
+        </div>
+        <div class="item">
+            <div class="lable">
+                <label for="">Manzil</label>
+            </div>
+            <div class="itm">
+                <input type="text" name="location" value="{{request.user.location}}" required>
+            </div>
+        </div>
+        <div class="item">
+            <div class="lable">
+                <label for="">Korxona</label>
+            </div>
+            <div class="itm">
+                <input type="text" name="company_name" value="{{request.user.company_name}}" required>
+            </div>
+        </div>
+        <div class="item">
+            <div class="lable">
+                <label for="">Lavozim</label>
+            </div>
+            <div class="itm">
+                <input type="text" name="position" value="{{request.user.position}}" required>
+            </div>
+        </div>
+    </div>
+  
+  
+    <div class="item"> 
+        <div style="display: flex; align-items: center;" class="sub"><button type="submit">Saqlash</button></div>
+    </div>
+</form>
+<h1>Parolni almashtirish</h1>
+<form  method="POST">{% csrf_token %}
+        <div class="item">
+            <div class="lable">
+                <label for="">Joriy parol</label>
+            </div>
+            <div class="itm">
+                <input type="text" name="pass1"   required>
+            </div>
+        </div>
+        <div class="item">
+            <div class="lable">
+                <label for="">Yangi parolni </label>
+            </div>
+            <div class="itm">
+                <input type="text" name="pass2"   required>
+            </div>
+        </div>
+        <div class="item">
+            <div class="lable">
+                <label for="">Yangi parolni takrorlash</label>
+            </div>
+            <div class="itm">
+                <input type="text" name="pass3"   required>
+            </div>
+        </div>
+  
+    <div class="item"> 
+        <div style="display: flex; align-items: center;" class="sub"><button type="submit">Saqlash</button></div>
+    </div>
+</form>
+{% endblock %}
+{% block script %} 
+
+{% endblock %}

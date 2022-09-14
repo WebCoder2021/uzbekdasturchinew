@@ -1,0 +1,100 @@
+<!DOCTYPE html>{% load i18n %}{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+<link rel="stylesheet" href="{% static 'styles/users/user_profile.css' %}">
+<script src="https://kit.fontawesome.com/92d9a36319.js" crossorigin="anonymous"></script>
+   {% block head %} {% endblock %}
+</head>
+<style>
+ 
+</style>
+<body>
+    <div style="background-color: #fff;" class="sidebar open">
+        <a href="{% url 'home' %}" class="logo-details">
+          <img src="{% static 'logo.png' %}" width="50" alt="">
+            <div class="logo_name">BuxDu Karyera</div>
+        </a>
+        <ul class="nav-list">
+          <li>
+           <a href="{% url 'user_vacan' %}"  class="active">
+             <i class='fa-solid fa-briefcase'></i>
+             <span class="links_name">Vakansiyalarim</span>
+           </a>
+           <span class="tooltip">Vakansiyalarim</span>
+         </li>
+         <li>
+           <a href="{% url 'user_resume_add' %}">
+            <i class="fa-regular fa-file"></i>
+             <span class="links_name">Rezyumelarim</span>
+           </a>
+           <span class="tooltip">Rezyumelarim</span>
+         </li>
+         <li>
+           <a href="{% url 'user_vacansy_add' %}">
+            <i class="fa-regular fa-plus"></i>
+             <span class="links_name">Vakansiya joylash</span>
+           </a>
+           <span class="tooltip">Vakansiya joylash</span>
+         </li>
+         <li>
+          <a href="{% url 'saved_vacan' %}">
+            <i class="fa-solid fa-bookmark"></i> 
+            <span class="links_name">Saqlanganlar</span>
+          </a>
+          <span class="tooltip">Saqlanganlar</span>
+        </li>
+         <li>
+           <a href="{% url 'support' %}">
+            <i class="fa-regular fa-comments"></i>
+             <span class="links_name">Qo'llab-Quvvatlash</span>
+           </a>
+           <span class="tooltip">Qo'llab-Quvvatlash</span>
+         </li>
+
+        </ul>
+      </div>
+      <section  class="home-section">
+        
+        <div  class="rightSide">
+              <div class="left">
+              </div>
+              <div class="right">
+                   <header >
+                     <nav>
+                      <i style="margin-left: 400px;" id="btn" class="fa-solid fa-bars open "></i>
+                      <ul > 
+                        <li><a><img src="{{request.user.picture.url}}" alt=""></a>
+                          <ul style="padding: 10px;">
+                            <li><a href="{% url 'profile' %}"><i style="		margin-right: 5px;" class="fa-solid fa-user"></i>Profil</a></li>
+                            <li><a href="{% url 'settings' %}"><i style="		margin-right: 5px;" class="fa-solid fa-gear"></i>Sozlamalar</a></li>
+                            <li > <a class="logout" href="{% url 'logout' %}"><i style="margin-right: 5px;" class="fa-solid fa-arrow-right-from-bracket"></i>Chiqish</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                     </nav>
+                   </header>
+              </div>
+        </div>
+          {% block content %} {% endblock %}
+      </section>
+      
+      <script>
+          let sidebar = document.querySelector(".sidebar");
+let closeBtn = document.querySelector("#btn");
+
+closeBtn.addEventListener("click", ()=>{
+  sidebar.classList.toggle("open");
+  menuBtnChange();
+});
+
+
+
+      </script>
+      {% block script %}{% endblock %}
+</body>
+</html>

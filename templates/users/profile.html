@@ -1,0 +1,43 @@
+{% extends 'users/user_base.html' %}{% load i18n %}{% load static %}
+{% block head %}
+<title>Profil ma'lumotlari</title>
+<link rel="stylesheet" href="{% static 'styles/users/user_profile.css' %}">
+
+{% endblock %}
+{% block content %}
+<h1>Profil ma'lumotlari</h1>
+<div  class="profile">
+    <div class="img">
+        <img src="{{ request.user.picture.url }}" width="100" alt="">
+    </div>
+    <div class="info">
+        <div class="full_name">
+<p>{{ request.user.get_full_name }}</p>
+        </div>
+        <div class="edit">
+            <div class="change_img btn">
+                <form action="" enctype="multipart/form-data" method="POST"> {% csrf_token %}
+                    <label class="btn-light">
+                        <input type="file" name="picture" multiple="" style="display: none;" accept=".png,.jpg" onchange="submit()">
+                        <i class="fa-solid fa-camera-rotate"></i>
+                    </label>
+                </form>
+            </div>
+            <div class="change_info">
+                <a href="{% url 'settings' %}" class="btn"><i class="fa-solid fa-pen"></i>Tahrirlash</a>
+            </div>
+        </div>
+    </div>
+    <div class="info">
+        <p>Korxona nomi: <span>{{ request.user.company_name }}</span></p>
+        <p>Lavozim: <span>{{ request.user.position }}</span></p>
+    </div>
+    <div class="info">
+        <p>Email: <span>{{ request.user.email }}</span></p>
+        <p>Manzil: <span>{{ request.user.location }}</span></p>
+    </div>
+</div>
+{% endblock %}
+{% block script %} 
+
+{% endblock %}

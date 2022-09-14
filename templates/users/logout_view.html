@@ -1,0 +1,16 @@
+{% extends 'home/main.html' %}{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'styles/style.css' %}">
+{% endblock %}
+{% block content %}
+<div class="logoutContainer">
+    <h1>Rostdan ham chiqishni xohlaysizmi?</h1>
+    <div class="buttons">
+        <a href="{% url 'logout' %}?logout=true"> <button class="danger">Chiqish</button></a>    
+        <a href="{% url 'home' %}"><button>Bosh sahifaga qaytish</button></a>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+
+{% endblock %}
