@@ -1,12 +1,12 @@
-{% extends 'users/user_base.html' %}{% load i18n %}{% load static %}
+{% extends 'home/main.html' %}{% load static %}
 {% block head %}
 <title>Profil ma'lumotlari</title>
 <link rel="stylesheet" href="{% static 'styles/users/user_profile.css' %}">
 
 {% endblock %}
 {% block content %}
-<h1>Profil ma'lumotlari</h1>
-<div  class="profile">
+<h1 style="margin: 10vw 10vw 0 10vw">Profil ma'lumotlari</h1>
+<div  class="profile" style="margin: 0 10vw 10vw 10vw">
     <div class="img">
         <img src="{{ request.user.picture.url }}" width="100" alt="">
     </div>
@@ -24,20 +24,16 @@
                 </form>
             </div>
             <div class="change_info">
-                <a href="{% url 'settings' %}" class="btn"><i class="fa-solid fa-pen"></i>Tahrirlash</a>
+                <a href="{% url 'settings' %}" class="btn"><i class="fa-solid fa-pen"></i>  Tahrirlash</a>
             </div>
         </div>
     </div>
     <div class="info">
-        <p>Korxona nomi: <span>{{ request.user.company_name }}</span></p>
-        <p>Lavozim: <span>{{ request.user.position }}</span></p>
-    </div>
-    <div class="info">
-        <p>Email: <span>{{ request.user.email }}</span></p>
-        <p>Manzil: <span>{{ request.user.location }}</span></p>
+        <p style="color: #181c51;">Email: <span>{{ request.user.email }}</span></p>
+        <p style="color: #181c51;">Manzil: <span>{{ request.user.location }}</span></p>
     </div>
 </div>
 {% endblock %}
-{% block script %} 
+{% block script %}
 
 {% endblock %}

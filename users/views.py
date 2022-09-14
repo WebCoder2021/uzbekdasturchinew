@@ -25,9 +25,7 @@ def log_in(request):
                 middle_name = post.get('middle_name', False)
                 email = post.get('email', False)
                 location = post.get('location', False)
-                company_name = post.get('company_name', False)
-                position = post.get('position', False)
-                if first_name and last_name and middle_name and location and company_name and position:
+                if first_name and last_name and middle_name and location:
                     user = CustomUser.objects.create(
                         phone=phone, first_name=first_name, last_name=last_name, middle_name=middle_name)
                     if email:
@@ -67,6 +65,15 @@ def check_user(request):
 def user_base(request):
     context = {}
     return render(request, 'users/user_base.html',context)
+def profile(request):
+    context = {}
+    if request.method == 'POST':
+        pic = request.FILES.get('picture',False)
+        if pic:
+            print
+            request.user.picture = pic
+            request.user.save()
+    return render(request, 'users/profile.html',context)
 def settings(request):
     context = {}
     if request.method == 'POST':

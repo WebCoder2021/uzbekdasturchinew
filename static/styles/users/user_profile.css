@@ -236,7 +236,7 @@
   background-color: #fff;
   display: grid;
   box-shadow: 3px 3px 3px #e6e6ff;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
   padding: 40px;
 }

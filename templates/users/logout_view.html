@@ -3,11 +3,11 @@
 <link rel="stylesheet" href="{% static 'styles/style.css' %}">
 {% endblock %}
 {% block content %}
-<div class="logoutContainer">
+<div class="logoutContainer" style="margin: 10vw; border-radius: 6px;">
     <h1>Rostdan ham chiqishni xohlaysizmi?</h1>
     <div class="buttons">
-        <a href="{% url 'logout' %}?logout=true"> <button class="danger">Chiqish</button></a>    
-        <a href="{% url 'home' %}"><button>Bosh sahifaga qaytish</button></a>
+        <a href="{% url 'logout' %}?logout=true"> <button class="btn btn-lg animated delay1 btn-dark btn-hover-dark me-4 mb-3 mb-sm-0" style="background-color: #ff5050; border-color: red">Chiqish</button></a>
+        <a href="{% url 'home' %}"><button class="btn btn-lg animated delay1 btn-dark btn-hover-dark me-4 mb-3 mb-sm-0">Bosh sahifaga qaytish</button></a>
     </div>
 </div>
 {% endblock %}

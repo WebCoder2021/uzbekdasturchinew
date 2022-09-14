@@ -1,4 +1,4 @@
-{% extends 'users/user_base.html' %}{% load i18n %}{% load static %}
+{% extends 'home/main.html' %}{% load static %}
 {% block head %}
 <title>Profil ma'lumotlari</title>
 <link rel="stylesheet" href="{% static 'styles/users/user_profile.css' %}">
@@ -49,26 +49,9 @@
                 <input type="text" name="location" value="{{request.user.location}}" required>
             </div>
         </div>
-        <div class="item">
-            <div class="lable">
-                <label for="">Korxona</label>
-            </div>
-            <div class="itm">
-                <input type="text" name="company_name" value="{{request.user.company_name}}" required>
-            </div>
-        </div>
-        <div class="item">
-            <div class="lable">
-                <label for="">Lavozim</label>
-            </div>
-            <div class="itm">
-                <input type="text" name="position" value="{{request.user.position}}" required>
-            </div>
-        </div>
     </div>
-  
-  
-    <div class="item"> 
+
+    <div class="item">
         <div style="display: flex; align-items: center;" class="sub"><button type="submit">Saqlash</button></div>
     </div>
 </form>
@@ -98,12 +81,11 @@
                 <input type="text" name="pass3"   required>
             </div>
         </div>
-  
-    <div class="item"> 
+    <div class="item">
         <div style="display: flex; align-items: center;" class="sub"><button type="submit">Saqlash</button></div>
     </div>
 </form>
 {% endblock %}
-{% block script %} 
+{% block script %}
 
 {% endblock %}

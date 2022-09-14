@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,9 +26,9 @@
     <link rel="stylesheet" href="{% static 'assets/css/vendor/vendor.min.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/plugins/plugins.min.css' %}" />
     <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}" />
-  <script src="https://kit.fontawesome.com/92d9a36319.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/92d9a36319.js" crossorigin="anonymous"></script>
 
-{% block head %} {% endblock %}
+    {% block head %} {% endblock %}
 </head>
 
 <body>
@@ -36,7 +37,8 @@
         <div class="modal-dialog offcanvas-dialog">
             <div class="modal-content">
                 <div class="modal-header offcanvas-header">
-                    <a class="offcanvas-logo" href="{% url 'home' %}"><img src="{% static 'assets/images/logo/uzbekdasturchilogo.png' %}" alt="logo" /></a>
+                    <a class="offcanvas-logo" href="{% url 'home' %}"><img
+                            src="{% static 'assets/images/logo/uzbekdasturchilogo.png' %}" alt="logo" /></a>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -47,7 +49,8 @@
                         <li><a href="{% url 'posts' %}">Maqolalar</a></li>
                         <li><a href="{% url 'contact' %}">Aloqa</a></li>
                         <li><a href="{% url 'faq' %}">FAQ</a></li>
-                        <li><a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i> Kirish</a></li></a></li>
+                        <li><a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i> Kirish</a></li></a>
+                        </li>
                     </ul>
 
 
@@ -63,7 +66,8 @@
                 <!-- Header Logo Start -->
                 <div class="col">
                     <div class="header-logo">
-                        <a href="{% url 'home' %}"><img src="{% static 'assets/images/logo/uzbekdasturchilogo.png' %}" width="160px" alt="Site Logo" /></a>
+                        <a href="{% url 'home' %}"><img src="{% static 'assets/images/logo/uzbekdasturchilogo.png' %}"
+                                width="160px" alt="Site Logo" /></a>
                     </div>
                 </div>
                 <!-- Header Logo End -->
@@ -72,16 +76,24 @@
                 <div class="col text-end">
                     <nav class="main-menu d-none d-lg-block">
                         <ul class="d-flex">
-                           <li>
-                            <a href="{% url 'posts' %}">Maqolalar</a>
+                            <li>
+                                <a href="{% url 'posts' %}">Maqolalar</a>
                             </li>
                             <li><a href="{% url 'contact' %}">Aloqa</a></li>
                             <li><a href="{% url 'faq' %}">FAQ</a></li>
                             {% if request.user.is_authenticated %}
-                            {% if request.user.is_staff %}<li><a href="{% url 'admin:index' %}"><i class="fa-solid fa-right-to-bracket"></i> Admin</a></li></a></li>
-                            {% else %} <li>+998 {{request.user.phone}}</li> {% endif %}
+                            {% if request.user.is_staff %}
+                            <li><a href="{% url 'admin:index' %}"><i class="fa-regular fa-user"></i> {{request.user.first_name}}</a></li>
                             {% else %}
-                            <li><a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i> Kirish</a></li></a></li>
+                            <li>
+                                <a href="{% url 'profile' %}"><i class="fa-regular fa-user"></i> {{request.user.first_name}} </a>
+                                <ul  class="sub-menu" style="padding: 0; width: max-content;">
+                                    <li class="sub-menu-item"><a class="sub-menu-link" href="{% url 'logout' %}"><i class="fa-solid fa-right-to-bracket"></i>  Chiqish</a></li>
+                                </ul>
+                            </li>
+                            {% endif %}
+                            {% else %}
+                            <li><a href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i> Kirish</a></li>
                             {% endif %}
                         </ul>
                     </nav>
@@ -97,7 +109,7 @@
         <!-- Header  End -->
     </header>
 
- {% block content %} {% endblock %} 
+    {% block content %} {% endblock %}
 
     <footer class="footer-section">
         <div class="footer-top position-relative">
@@ -155,7 +167,7 @@
                     <div class="col-lg-3 col-sm-6 mb-7">
                         <div class="footer-widget">
                             <h4 class="title">Bog'lanish</h4>
-                            <p>Buxoro shahar Piridasgir yo’l  yoqasida joylashgan majmua</p>
+                            <p>Buxoro shahar Piridasgir yo’l yoqasida joylashgan majmua</p>
                             <ul class="address">
                                 <li>
                                     <a class="address-link" href="tel:+998956001130">+998956001130</a>
@@ -180,7 +192,7 @@
                         <div class="copyright-info text-center">
                             <p>
                                 Mualliflik huquqi &copy; <span id="currentYear"></span>
-                               <a href="t.me/webcoder_bukhara" target="_blank">
+                                <a href="t.me/webcoder_bukhara" target="_blank">
                                     WebCoder Bukhara</a> tomonidan qilingan <i class="icofont-heart-alt"></i>
                                 , Barcha huquqlar himoyalangan
                             </p>
@@ -216,7 +228,7 @@
     <script src="{% static 'assets/js/plugins/plugins.min.js' %}"></script>
     <script src="{% static 'assets/js/ajax-contact.js' %}"></script>
     <script src="{% static 'assets/js/main.min.js' %}"></script>
-{% block script %}{% endblock %}
+    {% block script %}{% endblock %}
 </body>
 
 </html>
